@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+}
+#flexContainer{
+    display: flex;
+}
+
+#element{
+    flex-direction: row;
+    padding: 30px;
+    margin: 10px;
+    background-color: aquamarine;
+}
+#topBar{
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 20px;
+    border: solid black 1px;
+}
