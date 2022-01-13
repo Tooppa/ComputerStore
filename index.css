@@ -1,13 +1,9 @@
 body{
     margin: 0;
 }
-.elementContainer{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
 .container{
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     margin: 30px;
     margin-left: 160px;
     margin-right: 160px;
