@@ -2,17 +2,20 @@ body{
     margin: 0;
 }
 .container{
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    display: flex;
+    flex-wrap: wrap;
     margin: 30px;
-    margin-left: 160px;
-    margin-right: 160px;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .element{
     padding: 30px;
     margin: 30px;
     background-color: aquamarine;
+    flex-grow: 1;
+    flex-basis: 10em;
+    border-radius: 1em;
 }
 .topBar{
     width: 100vw;
@@ -27,6 +30,5 @@ body{
     text-align: center;
 }
 .bottomBar{
-    margin: 30px;
-    background-color: aquamarine;
+    flex-basis: 30em;
 }
