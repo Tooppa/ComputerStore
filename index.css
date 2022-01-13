@@ -20,8 +20,15 @@ body{
 }
 .topBar{
     width: 100vw;
-    height: 80px;
+    height: 60px;
     background-color: black;
+}
+.topBar > h1{
+    color: white;
+    height: 100%;
+    margin: 0;
+    padding-top: 10px;
+    text-align: center;
 }
 .bottomBar{
     margin: 30px;
