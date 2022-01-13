@@ -1,20 +1,29 @@
 body{
     margin: 0;
 }
-#flexContainer{
-    display: flex;
+.elementContainer{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.container{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin: 30px;
+    margin-left: 160px;
+    margin-right: 160px;
 }
 
-#element{
-    flex-direction: row;
+.element{
     padding: 30px;
-    margin: 10px;
+    margin: 30px;
     background-color: aquamarine;
 }
-#topBar{
-    position: absolute;
-    top: 0;
+.topBar{
     width: 100vw;
-    height: 20px;
-    border: solid black 1px;
+    height: 80px;
+    background-color: black;
+}
+.bottomBar{
+    margin: 30px;
+    background-color: aquamarine;
 }
