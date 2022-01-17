@@ -136,7 +136,7 @@ loanButton.onclick = LoanButtonFunc;
 bankButton.onclick = BankButtonFunc;
 workButton.onclick = WorkButtonFunc;
 payLoanButton.onclick = PayLoanFunc;
-payButton.onclick = BuyLaptopFunc;s
+payButton.onclick = BuyLaptopFunc;
 
 //eventlisteners
 laptopField.onchange = HandleLaptopChange;
