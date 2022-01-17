@@ -17,6 +17,7 @@ const laptopFeatures = elements.item(2).querySelector('#features');
 const laptopDesc = elements.item(3).querySelector('#desc');
 const laptopName = elements.item(3).querySelector('#name');
 const laptopPrice = elements.item(3).querySelector('#price');
+const laptopImage = elements.item(3).querySelector('#img');
 
 //api
 const apiAddress = 'https://noroff-komputer-store-api.herokuapp.com/computers';
@@ -96,18 +97,21 @@ const HandleLaptops = (laptops) => {
         laptopElement.appendChild(document.createTextNode(laptop.title));
         laptopField.appendChild(laptopElement);
     })
-    laptopDesc.textContent = laptops[0].description;
-    laptopName.textContent = laptops[0].title;
-    laptopPrice.textContent = laptops[0].price + ' EUR';
-    //for this have to use inner html to make a newline
-    laptopFeatures.innerHTML = laptops[0].specs.join('<br>');
+    InitLaptop(laptops[0]);
 }
 //updates thecorrect laptop information on the fields
 const HandleLaptopChange = e =>{
     const currentLaptop = laptops[e.target.selectedIndex];
+    InitLaptop(currentLaptop);
+}
+
+//inits laptops info fields to the site
+const InitLaptop = (currentLaptop) =>{
     laptopDesc.textContent = currentLaptop.description;
     laptopName.textContent = currentLaptop.title;
     laptopPrice.textContent = currentLaptop.price + ' EUR';
+    laptopImage.src = currentLaptop.image;
+    //for this have to use inner html to make a newline
     laptopFeatures.innerHTML = currentLaptop.specs.join('<br>');
 }
 
