@@ -89,6 +89,14 @@ const PayLoanFunc = () => {
     UpdateFields();
 }
 
+//tries to buy the laptop
+const BuyLaptopFunc = () =>{
+    let price = laptops[selectedLaptop].price;
+    if (balance - price >= 0){
+        balance -= price;
+    }
+}
+
 //add laptops to the fields
 const HandleLaptops = (laptops) => {
     laptops.map(laptop => {
@@ -101,7 +109,8 @@ const HandleLaptops = (laptops) => {
 }
 //updates thecorrect laptop information on the fields
 const HandleLaptopChange = e =>{
-    const currentLaptop = laptops[e.target.selectedIndex];
+    selectedLaptop = e.target.selectedIndex;
+    const currentLaptop = laptops[selectedLaptop];
     InitLaptop(currentLaptop);
 }
 
@@ -127,6 +136,7 @@ loanButton.onclick = LoanButtonFunc;
 bankButton.onclick = BankButtonFunc;
 workButton.onclick = WorkButtonFunc;
 payLoanButton.onclick = PayLoanFunc;
+payButton.onclick = BuyLaptopFunc;s
 
 //eventlisteners
 laptopField.onchange = HandleLaptopChange;

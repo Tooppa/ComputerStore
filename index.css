@@ -10,6 +10,9 @@ button{
     flex-grow: 1;
     background-color: #6ED2FD;
 }
+#buy{
+    background-color: #43DF8B;
+}
 .buttonContainer{
     display: flex;
     flex-wrap: wrap;
