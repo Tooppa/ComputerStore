@@ -11,6 +11,11 @@ const workButton = elements.item(1).querySelector('#work');
 const balanceField = elements.item(0).querySelector('#balance');
 const loanField = elements.item(0).querySelector('#loanAmount');
 const payField = elements.item(1).querySelector('#pay');
+const laptopField = elements.item(2).querySelector('#laptops');
+const laptopFeatures = elements.item(2).querySelector('#features');
+
+//api
+const apiAddress = 'https://noroff-komputer-store-api.herokuapp.com/computers';
 
 //data storage
 let balance = 0;
@@ -18,6 +23,9 @@ let loan = false;
 let loanAmount = 0;
 
 let payBalance = 0;
+
+let laptops = [];
+let selectedLaptop = 0;
 
 //functions for the buttons
 const LoanButtonFunc = () => {
@@ -76,6 +84,22 @@ const PayLoanFunc = () => {
     UpdateFields();
 }
 
+//add laptops to the fields
+const HandleLaptops = (laptops) => {
+    laptops.map(laptop => {
+        const laptopElement = document.createElement('option');
+        laptopElement.value = laptop.id;
+        laptopElement.appendChild(document.createTextNode(laptop.title));
+        laptopField.appendChild(laptopElement);
+    })
+    laptopFeatures.textContent = laptops[0].description;
+}
+//updates thecorrect laptop information on the fields
+const HandleLaptopChange = e =>{
+    const currentLaptop = laptops[e.target.selectedIndex];
+    laptopFeatures.textContent = currentLaptop.description;
+}
+
 //updates the fields on the site to match the correct values
 const UpdateFields = () => {
     balanceField.textContent = balance;
@@ -83,9 +107,19 @@ const UpdateFields = () => {
     payField.textContent = payBalance
 }
 
+//initialising buttons
 loanButton.onclick = LoanButtonFunc;
 bankButton.onclick = BankButtonFunc;
 workButton.onclick = WorkButtonFunc;
 payLoanButton.onclick = PayLoanFunc;
+
+//eventlisteners
+laptopField.onchange = HandleLaptopChange;
+
+//gets the values in json form from the api
+fetch(apiAddress)
+    .then(res => res.json())
+    .then(data => laptops = data)
+    .then(laptops => HandleLaptops(laptops));
 
 UpdateFields();
