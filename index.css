@@ -13,7 +13,7 @@ button{
 .buttonContainer{
     display: flex;
     flex-wrap: wrap;
-    padding-top: 20px;
+    margin-top: auto;
 }
 .container{
     display: flex;
@@ -24,6 +24,8 @@ button{
 }
 
 .element{
+    display: flex;
+    flex-direction: column;
     padding: 20px;
     margin: 20px;
     background-color: #E3EDF2;
@@ -44,6 +46,7 @@ button{
     text-align: center;
 }
 .bottomBar{
+    flex-direction: row;
     flex-basis: 30em;
     display: flex;
     flex-wrap: wrap;
