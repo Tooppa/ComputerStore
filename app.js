@@ -6,6 +6,7 @@ const loanButton = elements.item(0).querySelector('#loan');
 const payLoanButton = elements.item(0).querySelector('#payLoan');
 const bankButton = elements.item(1).querySelector('#bank');
 const workButton = elements.item(1).querySelector('#work');
+const payButton = elements.item(3).querySelector('#buy');
 
 //gets the fields that show info
 const balanceField = elements.item(0).querySelector('#balance');
@@ -13,6 +14,9 @@ const loanField = elements.item(0).querySelector('#loanAmount');
 const payField = elements.item(1).querySelector('#pay');
 const laptopField = elements.item(2).querySelector('#laptops');
 const laptopFeatures = elements.item(2).querySelector('#features');
+const laptopDesc = elements.item(3).querySelector('#desc');
+const laptopName = elements.item(3).querySelector('#name');
+const laptopPrice = elements.item(3).querySelector('#price');
 
 //api
 const apiAddress = 'https://noroff-komputer-store-api.herokuapp.com/computers';
@@ -92,12 +96,19 @@ const HandleLaptops = (laptops) => {
         laptopElement.appendChild(document.createTextNode(laptop.title));
         laptopField.appendChild(laptopElement);
     })
-    laptopFeatures.textContent = laptops[0].description;
+    laptopDesc.textContent = laptops[0].description;
+    laptopName.textContent = laptops[0].title;
+    laptopPrice.textContent = laptops[0].price + ' EUR';
+    //for this have to use inner html to make a newline
+    laptopFeatures.innerHTML = laptops[0].specs.join('<br>');
 }
 //updates thecorrect laptop information on the fields
 const HandleLaptopChange = e =>{
     const currentLaptop = laptops[e.target.selectedIndex];
-    laptopFeatures.textContent = currentLaptop.description;
+    laptopDesc.textContent = currentLaptop.description;
+    laptopName.textContent = currentLaptop.title;
+    laptopPrice.textContent = currentLaptop.price + ' EUR';
+    laptopFeatures.innerHTML = currentLaptop.specs.join('<br>');
 }
 
 //updates the fields on the site to match the correct values
