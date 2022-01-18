@@ -138,6 +138,7 @@ const UpdateFields = () => {
     balanceField.textContent = balance;
     loanField.textContent = loanAmount;
     payField.textContent = payBalance;
+    //hides payloanbutton and loan field if there is no loan
     if (loan){
         payLoanButton.style.display = 'block';
         loanField.parentElement.style.display = 'block';
