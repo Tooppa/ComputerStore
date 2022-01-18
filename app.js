@@ -104,6 +104,7 @@ const BuyLaptopFunc = () =>{
     }else{
         window.alert('You cant afford to buy this computer');
     }
+    UpdateFields();
 }
 
 //add laptops to the fields
