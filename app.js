@@ -3,7 +3,7 @@ const elements = document.getElementsByClassName('element');
 
 //gets the buttons from the elements
 const loanButton = elements.item(0).querySelector('#loan');
-const payLoanButton = elements.item(0).querySelector('#payLoan');
+const payLoanButton = elements.item(1).querySelector('#payLoan');
 const bankButton = elements.item(1).querySelector('#bank');
 const workButton = elements.item(1).querySelector('#work');
 const payButton = elements.item(3).querySelector('#buy');
@@ -21,6 +21,7 @@ const laptopImage = elements.item(3).querySelector('#img');
 
 //api
 const apiAddress = 'https://noroff-komputer-store-api.herokuapp.com/computers';
+const base = 'https://noroff-komputer-store-api.herokuapp.com/';
 
 //data storage
 let balance = 0;
@@ -36,9 +37,13 @@ let selectedLaptop = 0;
 const LoanButtonFunc = () => {
     //checks if there is a loan already and if so it skips
     if (!loan) {
-        loanAmount = balance / 2;
-        balance += loanAmount;
-        loan = true;
+        loanAmount = Number(window.prompt('Give the loan amount 0 - '+ balance * 2));
+        if (loanAmount <= balance*2 && loanAmount != 0){
+            balance += loanAmount;
+            loan = true;
+        }else{
+            loanAmount = 0;
+        }
     }
     UpdateFields();
 };
@@ -79,9 +84,10 @@ const PayLoanFunc = () => {
         if (restOfLoan > 0) {
             loanAmount -= payBalance;
             payBalance = 0;
-        //if you can pay the loan in full it leaves rest of the money to your work balance
+        //if you can pay the loan in full it tranfers rest to bank
         } else {
-            payBalance = -restOfLoan;
+            balance += -restOfLoan;
+            payBalance = 0;
             loan = false;
             loanAmount = 0;
         }
@@ -119,7 +125,7 @@ const InitLaptop = (currentLaptop) =>{
     laptopDesc.textContent = currentLaptop.description;
     laptopName.textContent = currentLaptop.title;
     laptopPrice.textContent = currentLaptop.price + ' EUR';
-    laptopImage.src = currentLaptop.image;
+    laptopImage.src = base + currentLaptop.image;
     //for this have to use inner html to make a newline
     laptopFeatures.innerHTML = currentLaptop.specs.join('<br>');
 }
@@ -128,7 +134,14 @@ const InitLaptop = (currentLaptop) =>{
 const UpdateFields = () => {
     balanceField.textContent = balance;
     loanField.textContent = loanAmount;
-    payField.textContent = payBalance
+    payField.textContent = payBalance;
+    if (loan){
+        payLoanButton.style.display = 'block';
+        loanField.parentElement.style.display = 'block';
+    }else{
+        payLoanButton.style.display = 'none';
+        loanField.parentElement.style.display = 'none';
+    }
 }
 
 //initialising buttons
