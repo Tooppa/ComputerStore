@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    overflow: hidden;
 }
 button{
     border: none;
@@ -9,6 +10,9 @@ button{
     margin: 2px;
     flex-grow: 1;
     background-color: #6ED2FD;
+}
+img{
+    height: 150px;
 }
 #buy{
     background-color: #43DF8B;
