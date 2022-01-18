@@ -100,6 +100,9 @@ const BuyLaptopFunc = () =>{
     let price = laptops[selectedLaptop].price;
     if (balance - price >= 0){
         balance -= price;
+        window.alert('You have bought a new laptop');
+    }else{
+        window.alert('You cant afford to buy this computer');
     }
 }
 
